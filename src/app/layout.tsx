@@ -1,23 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Roboto, Exo_2 } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import "./globals.css";
+import { ThemeProvider } from "@/components/themes-provider";
+import { Toaster } from "@/components/ui/sonner";
+
+const roboto = Roboto({
   subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-roboto",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const exo2 = Exo_2({
   subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-exo2",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "BuzzVid – Stream, Discover, Create",
+  title: "FlowTube – Stream, Discover, Create",
   description:
-    "BuzzVid is a next-gen video platform to stream, upload, and discover content from creators around the world.",
+    "FlowTube is a next-gen video platform to stream, upload, and discover content from creators around the world.",
   keywords: [
-    "BuzzVid",
+    "FlowTube",
     "video streaming",
     "upload videos",
     "video sharing",
@@ -25,21 +32,21 @@ export const metadata: Metadata = {
     "YouTube alternative",
     "watch videos",
   ],
-  authors: [{ name: "BuzzVid Team", url: "https://buzzVid.app" }],
-  creator: "BuzzVid",
-  metadataBase: new URL("https://buzzVid.app"),
+  authors: [{ name: "FlowTube Team", url: "https://flowtube.app" }],
+  creator: "FlowTube",
+  metadataBase: new URL("https://flowtube.app"),
   openGraph: {
-    title: "BuzzVid – Stream, Discover, Create",
+    title: "FlowTube – Stream, Discover, Create",
     description:
-      "Join BuzzVid – the next-gen video platform to share, explore, and create content with a global community.",
-    url: "https://buzzVid.app",
-    siteName: "BuzzVid",
+      "Join FlowTube – the next-gen video platform to share, explore, and create content with a global community.",
+    url: "https://flowtube.app",
+    siteName: "FlowTube",
     images: [
       {
-        url: "https://buzzVid.app/og-image.jpg", // Replace with your actual image
+        url: "https://flowtube.app/og-image.jpg", // Replace with your actual image
         width: 1200,
         height: 630,
-        alt: "BuzzVid – Stream and Discover",
+        alt: "FlowTube – Stream and Discover",
       },
     ],
     locale: "en_US",
@@ -47,10 +54,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BuzzVid – Stream, Discover, Create",
+    title: "FlowTube – Stream, Discover, Create",
     description:
       "Next-gen video sharing platform. Upload, discover, and watch content from creators worldwide.",
-    images: ["https://buzzVid.app/og-image.jpg"], // Match OpenGraph image
+    images: ["https://flowtube.app/og-image.jpg"], // Match OpenGraph image
   },
 };
 
@@ -60,11 +67,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html
+      lang="en"
+      className={`${roboto.variable} ${exo2.variable} scrollbar scrollbar-none`}
+      suppressHydrationWarning
+    >
+      <body className="">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Toaster />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
