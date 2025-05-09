@@ -20,13 +20,13 @@ const items = [
   },
   {
     title: "Subscription",
-    url: "/feed/subcriptions",
+    url: "/",
     icon: PlaySquareIcon,
     auth: true,
   },
   {
     title: "Trending",
-    url: "/feed/trending",
+    url: "/",
     icon: FlameIcon,
   },
 ];

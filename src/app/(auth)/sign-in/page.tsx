@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { z } from "zod";
@@ -69,7 +70,9 @@ export default function SignIn() {
     );
   };
 
-  const handleSignInWithProvider = async (provider: "google" | "twitter" | "github") => {
+  const handleSignInWithProvider = async (
+    provider: "google" | "twitter" | "github"
+  ) => {
     setProviderLoading(provider);
     await authClient.signIn.social(
       {
@@ -207,7 +210,7 @@ export default function SignIn() {
                 <FaXTwitter size={20} />
               )}
             </Button>
-               <Button
+            <Button
               size="lg"
               className="flex-1 cursor-pointer"
               variant="outline"
@@ -217,7 +220,7 @@ export default function SignIn() {
               {providerLoading === "github" ? (
                 <Loader2Icon className="h-5 w-5 animate-spin" />
               ) : (
-                <FaXTwitter size={20} />
+                <FaGithub size={20} />
               )}
             </Button>
           </div>

@@ -11,7 +11,7 @@ export const SidebarHeader = () => {
 
 
   return (
-    <div className="flex flex-shrink-0 items-center xl:hidden pl-1">
+    <div className="flex flex-shrink-0 items-center md:hidden pl-1">
       <SidebarTrigger className="cursor-pointer"/>
       <Link href={"/"}>
         <div className="flex items-center gap-1 p-4">
