@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 
-import { authClient } from "@/lib/auth/auth-client";
+import { authClient } from "@/lib/auth-client";
 
 interface LogoutButtonProps {
   children: React.ReactNode;
@@ -27,5 +27,3 @@ export const LogoutButton = ({ children }: LogoutButtonProps) => {
     </span>
   );
 };
-
-

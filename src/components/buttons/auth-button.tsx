@@ -7,7 +7,7 @@ import { Suspense } from "react";
 import { UserButton } from "@/components/buttons/user-button";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { authClient } from "@/lib/auth/auth-client";
+import { authClient } from "@/lib/auth-client";
 
 // Skeleton for the auth button
 const AuthButtonSkeleton = () => (
