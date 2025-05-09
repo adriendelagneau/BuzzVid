@@ -36,7 +36,7 @@ export default function SignIn() {
   const [backendError, setBackendError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const [providerLoading, setProviderLoading] = useState<
-    "google" | "twitter" | null
+    "google" | "twitter" | "github" | null
   >(null);
 
   const form = useForm<z.infer<typeof signInSchema>>({
@@ -69,7 +69,7 @@ export default function SignIn() {
     );
   };
 
-  const handleSignInWithProvider = async (provider: "google" | "twitter") => {
+  const handleSignInWithProvider = async (provider: "google" | "twitter" | "github") => {
     setProviderLoading(provider);
     await authClient.signIn.social(
       {
@@ -202,6 +202,19 @@ export default function SignIn() {
               disabled={providerLoading === "twitter"}
             >
               {providerLoading === "twitter" ? (
+                <Loader2Icon className="h-5 w-5 animate-spin" />
+              ) : (
+                <FaXTwitter size={20} />
+              )}
+            </Button>
+               <Button
+              size="lg"
+              className="flex-1 cursor-pointer"
+              variant="outline"
+              onClick={() => handleSignInWithProvider("github")}
+              disabled={providerLoading === "github"}
+            >
+              {providerLoading === "github" ? (
                 <Loader2Icon className="h-5 w-5 animate-spin" />
               ) : (
                 <FaXTwitter size={20} />
